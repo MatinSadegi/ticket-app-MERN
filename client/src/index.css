@@ -1,0 +1,40 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  @font-face {
+    font-family: 'yekan';
+    src: url('../public/Fonts/yekan-font/yekan-regular.ttf');
+    src: url('../public/Fonts/yekan-font/Yekan.ttf');
+    src: url('../public/Fonts/yekan-font/yekan-regular.eot');
+    src: url('../public/Fonts/yekan-font/Yekan.eot');
+    src: url('../public/Fonts/yekan-font/Yekan.woff');
+    src: url('../public/Fonts/yekan-font/yekan-regular.woff');
+  }
+}
+
+@layer components {
+  .static{
+    @apply w-7 h-4 text-xs text-center bg-white group-hover:bg-purple-500 group-hover:text-white rounded-xl 
+  }
+  .list{
+    @apply flex justify-between w-full 
+  }
+  .list-style{
+    @apply before:content-[""] before:w-2 before:h-2 before:ml-2 before:rounded-full before:inline-block
+  }
+  .input{
+    @apply w-full px-4 py-2 focus:border-2 focus:border-sky-200 bg-yellow-100 rounded-md text-gray-500 mt-1 outline-none
+  }
+  .loadingCircle{
+    @apply inline-block w-4 h-4 rounded-full mx-2.5 
+  }
+
+  .hamburger {
+    @apply w-6 h-0.5 bg-gray-500 m-1 transition-all duration-500;
+  }
+
+}
