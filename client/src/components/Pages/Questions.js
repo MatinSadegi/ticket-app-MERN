@@ -7,8 +7,9 @@ import Cards from '../Cards/Cards';
 
 
 const Questions = () => {
-  const isSignin = useSelector((state) => state.auth.authData);
-  if(!isSignin){
+  const profile = localStorage.getItem('profile')
+  
+  if(profile){
     return (
       <div className='px-14 lg:p-0 w-full lg:w-9/12 m-auto'>
         <div className='w-full py-2 my-7 bg-gradient-to-l from-yellow-100 to-orange-100 rounded-md px-3 '>
