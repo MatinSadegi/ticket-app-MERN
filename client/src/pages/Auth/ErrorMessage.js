@@ -1,0 +1,29 @@
+import React, { useEffect, useRef } from 'react';
+import { useSelector } from 'react-redux';
+import { gsap } from 'gsap';
+
+export const ErrorMessage = ({ authError }) => {
+  const err = useSelector((state) => state.error)
+  const boxRef = useRef();
+  useEffect(() => {
+    gsap.to(boxRef.current, { x: 30, opacity: 1, yoyo: true });
+    gsap.to(boxRef.current, { x: -150, opacity: 0, yoyo: true, delay: 3 });
+  }, [authError, err]);
+
+  return (
+    <>
+      {err.error && (
+        <div
+          ref={boxRef}
+          className='px-5 py-2.5 bg-red-500 text-white  flex items-center rounded-md  opacity-30 absolute z-20 -translate-x-16 left-0 bottom-2'
+        >
+          <p className='ml-2'>{err.errorMessage}</p>
+          <img
+            src='https://img.icons8.com/office/20/000000/high-priority.png'
+            alt='error'
+          />
+        </div>
+      )}
+    </>
+  );
+};

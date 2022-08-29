@@ -1,0 +1,50 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  @font-face {
+    font-family: 'yekan';
+    src: url('../public/Fonts/yekan-font/yekan-regular.ttf');
+    src: url('../public/Fonts/yekan-font/Yekan.ttf');
+    src: url('../public/Fonts/yekan-font/yekan-regular.eot');
+    src: url('../public/Fonts/yekan-font/Yekan.eot');
+    src: url('../public/Fonts/yekan-font/Yekan.woff');
+    src: url('../public/Fonts/yekan-font/yekan-regular.woff');
+  }
+}
+
+@layer components {
+  .static{
+    @apply w-7 h-4 text-xs text-center bg-white group-hover:bg-purple-500 group-hover:text-white rounded-xl 
+  }
+
+  .list-style{
+    @apply text-sm before:content-[""] before:w-2.5 before:h-2.5 before:ml-2 before:rounded-full before:inline-block
+  }
+  .list-style2{
+    @apply before:content-[""] before:w-2 before:h-2 before:ml-1 before:rounded-full before:inline-block
+  }
+  .input{
+    @apply w-full px-4 py-2 focus:border-2 focus:border-sky-200 bg-yellow-100 rounded-md text-gray-500 mt-1 outline-none
+  }
+  .loadingCircle{
+    @apply inline-block w-4 h-4 rounded-full mx-2.5 
+  }
+  .hamburger {
+    @apply w-6 h-0.5 bg-gray-500 m-1 transition-all duration-500;
+  }
+  .custom-checkbox{
+    @apply appearance-none w-6 h-6 rounded-[3px] outline-none inline-block align-top relative cursor-pointer border transition-all hover:border-indigo-800 checked:bg-indigo-800 after:content-[""] after:-translate-y-1/2 after:-translate-x-1/2  after:absolute after:w-[12px] after:h-[3px] after:bg-white  after:top-1/2 after:left-[13px] after:rounded after:-rotate-45 after:hidden checked:after:block before:content-[""] before:h-[3px] before:w-1.5 before:absolute before:bg-white before:left-[5px] before:top-1/2 before:rounded-l  before:rotate-45 before:hidden checked:before:block
+  }
+  .custom-radio{
+    @apply appearance-none mt-4 text-xs text-center before:border-2 before:px-3 before:py-0.5 before:border-sky-300 before:rounded-md checked:before:bg-sky-300 checked:before:text-white
+  }
+
+  .button-style{
+    @apply h-9 overflow-hidden rounded-md relative z-10 px-5 text-white  after:absolute after:left-0 after:bottom-0 after:w-full after:h-full  after:rounded-md after:-z-20  before:bottom-0 before:left-0 before:absolute before:rounded-md before:w-0 before:h-full  before:-z-10 before:transition-all before:duration-500 hover:before:w-full
+  }
+
+}
