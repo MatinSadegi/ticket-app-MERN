@@ -84,6 +84,7 @@ export const getUsers = async (req, res) => {
 //Get Users Length  
 export const getUsersLength = async (req, res) => {
   const users = await User.length
+  console.log(users)
   res.json(users);
 };  
 

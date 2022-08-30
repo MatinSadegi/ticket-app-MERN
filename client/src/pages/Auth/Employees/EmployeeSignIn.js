@@ -3,10 +3,10 @@ import { unwrapResult } from '@reduxjs/toolkit';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { employeeSignIn } from '../../../redux/Auth/employeeAuthSlice';
-import { setErrorMessage, setError } from '../../../redux/errorSlice';
+import { setError } from '../../../redux/errorSlice';
 
 
-const TeacherSignIn = ({ setIsSignUp, setIsStudent }) => {
+const EmployeeSignIn = ({ setIsSignUp, setIsStudent }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   //States
@@ -18,16 +18,16 @@ const TeacherSignIn = ({ setIsSignUp, setIsStudent }) => {
   //Functions
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
-    dispatch(setError(false));
-    dispatch(setErrorMessage(null));
+    dispatch(setError({errorMessage:null}));
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     const result = await dispatch(employeeSignIn({ formData, navigate }));
     const orginalResult = unwrapResult(result);
-    dispatch(setError(true));
-    dispatch(setErrorMessage(orginalResult));
+    if(!orginalResult.token){
+      dispatch(setError({ errorStatus: true, errorMessage: orginalResult.message }));
+    }
   };
 
   return (
@@ -81,4 +81,4 @@ const TeacherSignIn = ({ setIsSignUp, setIsStudent }) => {
   );
 };
 
-export default TeacherSignIn;
+export default EmployeeSignIn;

@@ -1,5 +1,8 @@
 import axios from 'axios';
-const API = axios.create({ baseURL: 'https://tikcet-app-mern.herokuapp.com' });
+const API = axios.create({
+  baseURL: 'https://tikcet-app-mern.herokuapp.com',
+});
+// const API = axios.create({ baseURL: 'http://localhost:5000' });
 
 API.interceptors.request.use((req) => {
     if(localStorage.getItem('employeeProfile')){
@@ -18,9 +21,9 @@ export const fetchPosts = () => API.get('/posts');
 export const createPost = (newPost) => API.post('/posts', newPost);
 export const getPostById = (id) => API.get(`/posts/${id}`);
 //Users
-export const signIn = (formData) => API.post('/user/signin', formData);
-export const signUp = (formData) => API.post('/user/signup', formData);
-export const getUsersLength = () => API.get('/user/userslength');
+export const signIn = (formData) => API.post('/users/signin', formData);
+export const signUp = (formData) => API.post('/users/signup', formData);
+export const getUsersLength = () => API.get('/users/userslength');
 //Employees
 export const employeeSignIn = (formData) =>
   API.post('/employees/employeesSignIn', formData);

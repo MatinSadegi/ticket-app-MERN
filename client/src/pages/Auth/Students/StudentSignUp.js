@@ -3,7 +3,7 @@ import { unwrapResult } from '@reduxjs/toolkit';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { userSignUp } from '../../../redux/Auth/userAuthSlice';
-import { setErrorMessage, setError } from '../../../redux/errorSlice';
+import {setError} from '../../../redux/errorSlice';
 
 
 const StudentSignUp = ({ setIsSignUp, setIsStudent }) => {
@@ -22,16 +22,18 @@ const StudentSignUp = ({ setIsSignUp, setIsStudent }) => {
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
-    dispatch(setError(false));
-    dispatch(setErrorMessage(null));
+    dispatch(setError({ errorMessage: null }));
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     const result = await dispatch(userSignUp({ formData, navigate }));
     const orginalResult = unwrapResult(result);
-    dispatch(setError(true));
-    dispatch(setErrorMessage(orginalResult));
+    if (!orginalResult.token) {
+      dispatch(
+        setError({errorMessage: orginalResult.message })
+      );
+    }
   };
 
   return (

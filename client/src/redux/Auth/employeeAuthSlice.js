@@ -5,12 +5,13 @@ export const employeeSignIn = createAsyncThunk(
   'employeeSignIn',
   async ({ formData, navigate }) => {
     try {
+      console.log(formData)
       const res = await api.employeeSignIn(formData);
       navigate('/');
       return res.data;
     } catch (error) {
       const res = error.response.data;
-      return res.message;
+      return res;
     }
   }
 );
@@ -63,52 +64,54 @@ const employeeAuthSlice = createSlice({
   },
   extraReducers: {
     [employeeSignIn.pending]: (state) => {
-      state.status = 'pending for sign in';
+      state.status = 'pending for sign in employee';
     },
     [employeeSignIn.fulfilled]: (state, action) => {
-      localStorage.setItem(
-        'employeeProfile',
-        JSON.stringify({ ...action?.payload })
-      );
-      state.status = 'sign in succsessss!!!';
-      state.employees = action?.payload;
+      if(action.payload.token){
+        localStorage.setItem(
+          'employeeProfile',
+          JSON.stringify(action?.payload)
+        );
+        state.status = 'sign in successfull !'
+        state.employees = action?.payload;
+      }
     },
     [employeeSignIn.rejected]: (state, action) => {
-      state.status = 'rejecteeed';
+      state.status = 'rejected';
     },
     [getEmployees.pending]: (state, action) => {
-      state.status = 'pending for sign in';
+      state.status = 'pending for get employees';
     },
     [getEmployees.fulfilled]: (state, action) => {
-      state.status = 'sign in succsessss!!!';
+      state.status = 'get employees successfull !';
       state.employeeData = action?.payload;
     },
     [getEmployees.rejected]: (state, action) => {
-      state.status = 'rejecteeed';
+      state.status = 'rejected';
     },
     [getEmployeeById.pending]: (state, action) => {
-      state.status = 'pending';
+      state.status = 'pending for get employees by id';
       state.loading = true
     },
     [getEmployeeById.fulfilled]: (state, action) => {
-      state.status = 'sign in succsessss!!!';
+      state.status = 'get employee successfull !';
       state.employee = action?.payload;
       state.loading = false
     },
     [getEmployeeById.rejected]: (state, action) => {
-      state.status = 'rejecteeed';
+      state.status = 'rejected';
     },
     [updateEmployee.pending]: (state, action) => {
-      state.status = 'pending';
+      state.status = 'pending for update employee ';
       state.loading = true
     },
     [updateEmployee.fulfilled]: (state, action) => {
-      state.status = 'sign in succsessss!!!';
+      state.status = 'update employee successfull ';
       state.employee = action?.payload;
       state.loading = false
     },
     [updateEmployee.rejected]: (state, action) => {
-      state.status = 'rejecteeed';
+      state.status = 'rejected';
     },
   },
 });

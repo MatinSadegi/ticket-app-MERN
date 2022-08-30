@@ -29,14 +29,14 @@ const cardSlice = createSlice({
   reducers: {},
   extraReducers: {
     [getPosts.pending]: (state, action) => {
-      state.status = 'pending';
+      state.status = 'pending for get posts';
     },
     [getPosts.fulfilled]: (state, action) => {
-      state.status = 'success';
+      state.status = 'get posts successfull !';
       state.posts = action.payload.postMessages;
     },
     [getPosts.rejected]: (state, action) => {
-      state.status = 'errorrr';
+      state.status = 'rejected';
     },
     [createPosts.fulfilled]: (state, action) => {
         state.status = 'post made successfully';
@@ -46,7 +46,7 @@ const cardSlice = createSlice({
       state.status = 'failed to create post';
     },
     [getPostById.pending]: (state, action) => {
-        state.status = 'pending';
+        state.status = 'pending for get post by id';
         state.loading = true
     },
     [getPostById.fulfilled]: (state, action) => {

@@ -19,7 +19,7 @@ app.use(cors());
 
 app.use('/answer', answersRoutes);
 app.use('/posts', postsRoutes);
-app.use('/user', usersRoutes); 
+app.use('/users', usersRoutes); 
 app.use('/employees', employeesRoutes);
 app.use('/', (req,res) =>{ 
   res.send("Hello to ticket app API")   

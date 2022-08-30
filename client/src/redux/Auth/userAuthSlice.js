@@ -59,50 +59,46 @@ const userAuthSlice = createSlice({
     usersLength:null
   },
   reducers: {
-    userSignOut: (state, action) => {
+    userSignOut: (state) => {
       localStorage.removeItem('userProfile');
       state.users = null;
     },
   },
   extraReducers: {
-    [userSignIn.pending]: (state, action) => {
-      state.status = 'pending for sign in';
+    [userSignIn.pending]: (state) => {
+      state.status = 'pending for sign in user';
     },
     [userSignIn.fulfilled]: (state, action) => {
-      localStorage.setItem(
-        'userProfile',
-        JSON.stringify({ ...action?.payload })
-      );
-      state.status = 'sign in succsessss!!!';
-      state.users = action?.payload;
+      console.log(action.payload);
+      if (action.payload.token) {
+        localStorage.setItem('userProfile', JSON.stringify(action?.payload));
+        state.status = 'sign in successfull !';
+        state.users = action?.payload;
+      }
     },
-    [userSignUp.pending]: (state, action) => {
-      state.status = 'pending for sign up';
+    [userSignUp.pending]: (state) => {
+      state.status = 'pending for sign up user';
     },
     [userSignUp.fulfilled]: (state, action) => {
-      localStorage.setItem(
-        'userProfile',
-        JSON.stringify({ ...action?.payload })
-      );
-      state.status = 'sign up succsessss!!!';
-      state.authData = action.payload;
+     if (action.payload.token) {
+       localStorage.setItem('userProfile', JSON.stringify(action?.payload));
+       state.status = 'sign up successfull !';
+       state.users = action?.payload;
+     }
     },
-    [getUsers.pending]: (state, action) => {
-      state.status = 'pending for sign in';
+    [getUsers.pending]: (state) => {
+      state.status = 'pending for get users';
     },
     [getUsers.fulfilled]: (state, action) => {
-      state.status = 'sign in succsessss!!!';
+      state.status = 'get user successfull !';
       state.usersData = action?.payload;
     },
-    [getUsers.rejected]: (state, action) => {
-      state.status = 'rejecteeed';
+    [getUsers.rejected]: (state) => {
+      state.status = 'rejected';
     },
     [getUsersLength.fulfilled]: (state, action) => {
-      state.status = 'sign in succsessss!!!';
+      state.status = 'get users length successfull !';
       state.usersLength = action?.payload;
-    },
-    [getUsersLength.rejected]: (state, action) => {
-      state.status = 'rejecteeed';
     },
   },
 });

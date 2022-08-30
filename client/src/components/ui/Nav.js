@@ -9,6 +9,8 @@ const Nav = () => {
   const navigate = useNavigate()
   const employeesData = useSelector((state) => state.employeeAuth.employees);
   const userData = useSelector(state => state.userAuth.users)
+  console.log(userData);
+  console.log(employeesData);
   const [hamburger, setHamburger] = useState(false);
   const dispatch = useDispatch();
   const signOutHandler = () => {
@@ -44,7 +46,7 @@ const Nav = () => {
           hamburger ? '-translate-x-0' : 'translate-x-full md:translate-x-0'
         }`}
       >
-        {employeesData || userData ? (
+        {(employeesData || userData)?(
           <div className='flex items-center'>
             <div className='bg-sky-200 p-1.5 rounded-full ml-4'>
               <img
@@ -120,3 +122,5 @@ const Nav = () => {
 };
 
 export default Nav;
+
+//${ employeesData && employeesData.employee.admin ? 'block' : 'hidden'}
