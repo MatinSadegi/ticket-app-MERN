@@ -1,7 +1,5 @@
 import bcrypt from 'bcryptjs';
-
 import generateToken from '../utils/generateToken.js';
-
 import User from '../models/user.js';
 
 //SignIn
@@ -83,9 +81,8 @@ export const getUsers = async (req, res) => {
 };
 //Get Users Length  
 export const getUsersLength = async (req, res) => {
-  const users = await User.length
-  console.log(users)
-  res.json(users);
+  const users = await User.find({});
+  res.json(users.length);
 };  
 
 
