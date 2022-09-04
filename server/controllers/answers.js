@@ -2,7 +2,6 @@ import Answer from '../models/answer.js';
 //Create Answer
 export const createAnswer = async (req, res) => {
   const answer = req.body;
-  console.log(answer);
   const newAnswer = new Answer({
     ...answer,
     createdAt: new Date().toISOString(),

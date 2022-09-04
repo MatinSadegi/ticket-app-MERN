@@ -35,7 +35,6 @@ export const signup = async (req, res) => {
     if ((firstName.trim == '')) {
       return res.status(400).json({ message: 'نام وارد نشده است' });
     }
-    console.log(firstName);
     if ((lastName.trim == '')) {
       return res.status(400).json({ message: 'نام خانوادگی وارد نشده است' });
     }
@@ -56,7 +55,6 @@ export const signup = async (req, res) => {
         .status(400)
         .json({ message: ' این کد ملی قبلا در سیستم ثبت شده است ' });
     }
-      console.log(existingUser);
     const hashedPassword = await bcrypt.hash(password, 12);
     const user = await User.create({
       firstName,
