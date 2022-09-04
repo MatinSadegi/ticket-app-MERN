@@ -4,7 +4,6 @@ import { gsap } from 'gsap';
 
 export const ErrorMessage = ({ authError }) => {
   const err = useSelector((state) => state.error)
-  console.log(err)
   const boxRef = useRef();
   useEffect(() => {
     gsap.to(boxRef.current, { x: 30, opacity: 1, yoyo: true });

@@ -178,7 +178,6 @@ const Card = ({ show, setShow }) => {
                         newArray.splice(index, 1);
                         setPermissions(newArray);
                       }
-                      console.log(permissions);
                     } else {
                       setPermissions([...permissions, e.target.value]);
                     }

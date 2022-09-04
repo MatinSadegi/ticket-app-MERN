@@ -9,7 +9,7 @@ const Permissions = ({ firstName, lastName, permissions, id, setShow }) => {
       <p className='col-span-2'>
         {firstName} {lastName}
       </p>
-      <div className='col-span-7 flex gap-4'>
+      <div className='col-span-7 flex gap-4 flex-wrap'>
         {permissions.map((item) => (
           <p
             key={item}

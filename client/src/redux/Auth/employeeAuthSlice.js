@@ -5,7 +5,6 @@ export const employeeSignIn = createAsyncThunk(
   'employeeSignIn',
   async ({ formData, navigate }) => {
     try {
-      console.log(formData)
       const res = await api.employeeSignIn(formData);
       navigate('/');
       return res.data;

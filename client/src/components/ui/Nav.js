@@ -9,8 +9,6 @@ const Nav = () => {
   const navigate = useNavigate()
   const employeesData = useSelector((state) => state.employeeAuth.employees);
   const userData = useSelector(state => state.userAuth.users)
-  console.log(userData);
-  console.log(employeesData);
   const [hamburger, setHamburger] = useState(false);
   const dispatch = useDispatch();
   const signOutHandler = () => {
@@ -20,7 +18,7 @@ const Nav = () => {
   };
 
   return (
-    <div className=' min-h-[8vh] w-full px-5 py-2 border-b flex justify-between items-center font-yekan '>
+    <div className=' py-2 w-full px-5 border-b flex justify-between items-center font-yekan '>
       <div className=' md:hidden w-full flex justify-between items-center'>
         <div
           onClick={() => setHamburger(!hamburger)}

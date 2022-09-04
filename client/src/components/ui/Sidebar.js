@@ -10,7 +10,6 @@ import Logo from '../../images/jira-3.svg';
 const Sidebar = () => {
   const dispatch = useDispatch()
    const usersLength = useSelector((state) => state.userAuth.usersLength);
-   console.log(usersLength);
    const postsLength = useSelector((state) => state.fetch.posts).length;
   useEffect(() => {
     dispatch(getPosts())
